@@ -1,0 +1,4 @@
+suites:
+    default:
+        namespace: Katas
+        psr4_prefix: Katas
