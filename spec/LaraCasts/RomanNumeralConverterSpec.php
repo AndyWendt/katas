@@ -13,38 +13,14 @@ class RomanNumeralConverterSpec extends ObjectBehavior
         $this->shouldHaveType(RomanNumeralConverter::class);
     }
 
-    function it_converts_1()
+    function it_converts_roman_numeral_constants()
     {
         $this->convert(1)->shouldReturn('I');
-    }
-
-    function it_converts_5()
-    {
         $this->convert(5)->shouldReturn('V');
-    }
-
-    function it_converts_10()
-    {
         $this->convert(10)->shouldReturn('X');
-    }
-
-    function it_converts_50()
-    {
         $this->convert(50)->shouldReturn('L');
-    }
-
-    function it_converts_100()
-    {
         $this->convert(100)->shouldReturn('C');
-    }
-
-    function it_converts_500()
-    {
         $this->convert(500)->shouldReturn('D');
-    }
-
-    function it_converts_1000()
-    {
         $this->convert(1000)->shouldReturn('M');
     }
 }
