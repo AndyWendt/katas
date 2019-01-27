@@ -6,32 +6,33 @@ class PrimeFactors
 {
     public function generate(int $number)
     {
-        $result = $this->calculateFactors($number);
-
-        var_dump($result);
-        return $result;
+        return $this->calculateFactors($number);
     }
 
     private function calculateFactors(int $number, array $factors = [])
     {
-//        var_dump($number, $factors);
-
         if ($number === 1) {
             return $factors;
         }
 
-        if ($this->numberIsPrime($number)) {
+        if ($number === 2) {
+            array_push($factors, 2);
+            return $factors;
+        }
+
+        if ($this->isPrime($number)) {
             array_push($factors, $number);
             return $factors;
         }
 
-        array_push($factors, 2);
-        $remainder = $number / 2;
+        $basePrimeDivisibleBy = $this->checkBasePrimes($number);
+        array_push($factors, $basePrimeDivisibleBy);
+        $remainder = $number / $basePrimeDivisibleBy;
 
         return $this->calculateFactors($remainder, $factors);
     }
 
-    private function numberIsPrime(int $number): bool
+    private function isPrime(int $number): bool
     {
         /*
          *  If 59 were not a prime number, then it would be divisible by at
@@ -50,8 +51,28 @@ class PrimeFactors
          * And it must be a whole number greater than 1.
          */
 
-//        sqrt($number);
+        for ($i = 9; $i > 1; $i--) {
+            if ($this->numberIsDivisible($number, $i)) {
+                return false;
+            }
+        }
 
-        return in_array($number % 2, [1]);
+        return true;
+    }
+
+    private function checkBasePrimes(int $number): int
+    {
+        foreach ([2, 3, 5, 7] as $basePrime) {
+            if ($this->numberIsDivisible($number, $basePrime)) {
+                return $basePrime;
+            }
+        }
+
+        throw new \InvalidArgumentException("Number is not divisible: " . $number);
+    }
+
+    private function numberIsDivisible(int $denominator, int $numerator): bool
+    {
+        return ($denominator % $numerator) === 0;
     }
 }

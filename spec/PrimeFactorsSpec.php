@@ -28,8 +28,18 @@ class PrimeFactorsSpec extends ObjectBehavior
         $this->generate(3)->shouldReturn([3]);
     }
 
+    function it_should_return_5_for_5()
+    {
+        $this->generate(5)->shouldReturn([5]);
+    }
+
     function it_should_return_2_2_for_4()
     {
         $this->generate(4)->shouldReturn([2,2]);
+    }
+
+    function it_should_return_5_5_for_25()
+    {
+        $this->generate(25)->shouldReturn([5,5]);
     }
 }
