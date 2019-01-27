@@ -4,6 +4,8 @@ namespace Katas;
 
 class PrimeFactors
 {
+    const BASE_PRIMES = [2,3,5,7];
+
     public function generate(int $number)
     {
         return $this->calculateFactors($number);
@@ -15,8 +17,8 @@ class PrimeFactors
             return $factors;
         }
 
-        if ($number === 2) {
-            array_push($factors, 2);
+        if (in_array($number, self::BASE_PRIMES)) {
+            array_push($factors, $number);
             return $factors;
         }
 
@@ -62,7 +64,7 @@ class PrimeFactors
 
     private function checkBasePrimes(int $number): int
     {
-        foreach ([2, 3, 5, 7] as $basePrime) {
+        foreach (self::BASE_PRIMES as $basePrime) {
             if ($this->numberIsDivisible($number, $basePrime)) {
                 return $basePrime;
             }
