@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Katas;
+namespace spec\Katas\LaraCasts;
 
-use Katas\PrimeFactors;
+use Katas\LaraCasts\PrimeFactors;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
