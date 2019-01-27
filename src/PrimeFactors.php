@@ -17,7 +17,7 @@ class PrimeFactors
             return $factors;
         }
 
-        if (in_array($number, self::BASE_PRIMES)) {
+        if ($this->isBasePrime($number)) {
             array_push($factors, $number);
             return $factors;
         }
@@ -76,5 +76,14 @@ class PrimeFactors
     private function numberIsDivisible(int $denominator, int $numerator): bool
     {
         return ($denominator % $numerator) === 0;
+    }
+
+    /**
+     * @param int $number
+     * @return bool
+     */
+    private function isBasePrime(int $number): bool
+    {
+        return in_array($number, self::BASE_PRIMES);
     }
 }
