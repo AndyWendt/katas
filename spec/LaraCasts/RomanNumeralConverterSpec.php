@@ -62,4 +62,11 @@ class RomanNumeralConverterSpec extends ObjectBehavior
         $this->convert(666)->shouldReturn('DCLXVI');
         $this->convert(999)->shouldReturn('CMXCIX');
     }
+
+    function it_converts_m_correctly()
+    {
+        $this->convert(1001)->shouldReturn('MI');
+        $this->convert(3961)->shouldReturn('MMMCMLXI');
+        $this->convert(10001)->shouldReturn('MMMMMMMMMMI');
+    }
 }

@@ -36,12 +36,13 @@ class RomanNumeralConverter
         $digit = (int) array_pop($numberArray);
         $tens = (int) array_pop($numberArray);
         $hundreds = (int) array_pop($numberArray);
-        $thousands = (int) array_pop($numberArray);
+        $thousands = (int) implode('', $numberArray);
 
         $digitNumeral = $this->mapNumberToNumeral($digit, 1);
         $tenNumeral = $this->mapNumberToNumeral($tens, 10);
         $hundredNumeral = $this->mapNumberToNumeral($hundreds, 100);
-        return sprintf('%s%s%s', $hundredNumeral, $tenNumeral, $digitNumeral);
+        $thousandNumeral = str_repeat(self::NUMERAL_MAP[1000], $thousands);
+        return sprintf('%s%s%s%s', $thousandNumeral, $hundredNumeral, $tenNumeral, $digitNumeral);
     }
 
     private function mapNumberToNumeral(int $digit, int $denominator): string
