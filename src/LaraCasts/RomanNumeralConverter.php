@@ -68,7 +68,8 @@ class RomanNumeralConverter
 
         if (($testValue > $mid) && ($testValue < ($max - $denominator))) {
             $diff = $testValue - $mid;
-            $functionArgs = array_fill(0, $diff, $denominator);
+            $numberToFill = $diff/$denominator;
+            $functionArgs = array_fill(0, $numberToFill, $denominator);
             array_unshift($functionArgs, $mid);
             return call_user_func_array([$this, 'formatNumber'], $functionArgs);
         }
