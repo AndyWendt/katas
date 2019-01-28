@@ -33,11 +33,10 @@ class RomanNumeralConverter
         // It will go in front of the number
         // solve for digit, tens, hundreds, thousands?
         $numberArray = str_split((string) $number);
-
         $digit = (int) array_pop($numberArray);
         $tens = (int) array_pop($numberArray);
         $hundreds = (int) array_pop($numberArray);
-        $thousands = $numberArray;
+        $thousands = (int) array_pop($numberArray);
 
         $digitNumeral = $this->mapNumberToNumeral($digit, 1);
         $tenNumeral = $this->mapNumberToNumeral($tens, 10);
@@ -46,6 +45,10 @@ class RomanNumeralConverter
 
     private function mapNumberToNumeral(int $digit, int $denominator): string
     {
+        if (!$digit) {
+            return '';
+        }
+
         $mid = $denominator * 5;
         $max = $denominator * 10;
         $numeral = self::NUMERAL_MAP[$denominator];
