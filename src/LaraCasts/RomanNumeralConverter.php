@@ -52,17 +52,22 @@ class RomanNumeralConverter
         $mid = $denominator * 5;
         $max = $denominator * 10;
         $numeral = self::NUMERAL_MAP[$denominator];
+        $testValue = $digit * $denominator;
 
-        if (($mid - $denominator) === $digit) {
+        if (($mid - $denominator) === $testValue) {
             return $this->formatNumber($denominator, $mid);
         }
 
-        if (($max - $denominator) === $digit) {
+        if (($max - $denominator) === $testValue) {
             return $this->formatNumber($denominator, $max);
         }
 
-        if (($digit > $mid) && ($digit < $max - $denominator)) {
-            $diff = $digit - $mid;
+        if ($testValue === $mid) {
+            return $this->formatNumber($mid);
+        }
+
+        if (($testValue > $mid) && ($testValue < ($max - $denominator))) {
+            $diff = $testValue - $mid;
             $functionArgs = array_fill(0, $diff, $denominator);
             array_unshift($functionArgs, $mid);
             return call_user_func_array([$this, 'formatNumber'], $functionArgs);
