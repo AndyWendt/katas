@@ -40,7 +40,8 @@ class RomanNumeralConverter
         $thousands = $numberArray;
 
         $digitNumeral = $this->mapNumberToNumeral($digit, 1);
-        return $digitNumeral;
+        $tenNumeral = $this->mapNumberToNumeral($tens, 10);
+        return sprintf('%s%s', $tenNumeral, $digitNumeral);
     }
 
     private function mapNumberToNumeral(int $digit, int $denominator): string
