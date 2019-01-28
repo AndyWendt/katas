@@ -57,5 +57,9 @@ class RomanNumeralConverterSpec extends ObjectBehavior
     function it_converts_C_correctly()
     {
         $this->convert(101)->shouldReturn('CI');
+        $this->convert(444)->shouldReturn('CDXLIV');
+        $this->convert(555)->shouldReturn('DLV');
+        $this->convert(666)->shouldReturn('DCLXVI');
+        $this->convert(999)->shouldReturn('CMXCIX');
     }
 }
