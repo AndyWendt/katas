@@ -49,10 +49,21 @@ class RomanNumeralConverter
         $max = $denominator * 10;
         $numeral = self::NUMERAL_MAP[$denominator];
 
-//        if (($mid - $denominator) === $digit) {
-//            return
-//        }
+        if (($mid - $denominator) === $digit) {
+            return $this->formatNumber($denominator, $mid);
+        }
 
         return str_repeat($numeral, $digit);
+    }
+
+    private function formatNumber(...$indexes): string
+    {
+        $string = '';
+
+        foreach ($indexes as $index) {
+            $string .= self::NUMERAL_MAP[$index];
+        }
+
+        return $string;
     }
 }
