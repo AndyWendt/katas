@@ -57,6 +57,13 @@ class RomanNumeralConverter
             return $this->formatNumber($denominator, $max);
         }
 
+        if (($digit > $mid) && ($digit < $max - $denominator)) {
+            $diff = $digit - $mid;
+            $functionArgs = array_fill(0, $diff, $denominator);
+            array_unshift($functionArgs, $mid);
+            return call_user_func_array([$this, 'formatNumber'], $functionArgs);
+        }
+
         return str_repeat($numeral, $digit);
     }
 
