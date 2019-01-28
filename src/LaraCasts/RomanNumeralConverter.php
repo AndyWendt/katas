@@ -53,6 +53,10 @@ class RomanNumeralConverter
             return $this->formatNumber($denominator, $mid);
         }
 
+        if (($max - $denominator) === $digit) {
+            return $this->formatNumber($denominator, $max);
+        }
+
         return str_repeat($numeral, $digit);
     }
 
