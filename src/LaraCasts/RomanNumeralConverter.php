@@ -34,9 +34,9 @@ class RomanNumeralConverter
         // solve for digit, tens, hundreds, thousands?
         $numberArray = str_split((string) $number);
 
-        $digit = array_pop($numberArray);
-        $tens = array_pop($numberArray);
-        $hundreds = array_pop($numberArray);
+        $digit = (int) array_pop($numberArray);
+        $tens = (int) array_pop($numberArray);
+        $hundreds = (int) array_pop($numberArray);
         $thousands = $numberArray;
 
         $digitNumeral = $this->mapNumberToNumeral($digit, 1);

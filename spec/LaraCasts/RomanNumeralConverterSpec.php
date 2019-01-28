@@ -38,5 +38,7 @@ class RomanNumeralConverterSpec extends ObjectBehavior
     function it_converts_X_correctly()
     {
         $this->convert(11)->shouldReturn('XI');
+//        $this->convert(12)->shouldReturn('XII');
+//        $this->convert(16)->shouldReturn('XVI');
     }
 }
