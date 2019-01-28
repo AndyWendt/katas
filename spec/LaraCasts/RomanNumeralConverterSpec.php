@@ -23,4 +23,9 @@ class RomanNumeralConverterSpec extends ObjectBehavior
         $this->convert(500)->shouldReturn('D');
         $this->convert(1000)->shouldReturn('M');
     }
+
+    function it_converts_I_correctly()
+    {
+        $this->convert(2)->shouldReturn('II');
+    }
 }
