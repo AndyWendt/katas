@@ -49,5 +49,8 @@ class RomanNumeralConverterSpec extends ObjectBehavior
         $this->convert(83)->shouldReturn('LXXXIII');
         $this->convert(86)->shouldReturn('LXXXVI');
         $this->convert(88)->shouldReturn('LXXXVIII');
+        $this->convert(93)->shouldReturn('XCIII');
+        $this->convert(94)->shouldReturn('XCIV');
+        $this->convert(99)->shouldReturn('XCIX');
     }
 }
