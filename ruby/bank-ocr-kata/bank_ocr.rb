@@ -21,7 +21,8 @@ class Number
       carry1
     end
     {
-      10 => "0"
+      10 => "0",
+      4 => "1",
     }.fetch(d)
   end
 end
