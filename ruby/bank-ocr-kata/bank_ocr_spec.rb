@@ -6,17 +6,37 @@ def accounts_file_reader(file_name)
   File.open(file_path)
 end
 
-describe "user story 1" do
+describe 'user story 1' do
   describe Accounts do
-    it "parses an account number" do
-
+    it 'parses an account number' do
       {
         :'user-story-1-000000000.txt' => '000000000',
+        :'user-story-1-111111111.txt' => '111111111',
       }.each do |file_name_symbol, expected|
         account_numbers_string = accounts_file_reader(file_name_symbol.to_s)
         result = Accounts.from_string(account_numbers_string).to_a
 
         expect(result).to eq([expected])
+      end
+    end
+  end
+
+  describe Number do
+    it 'converts a pipe/underscore array representation of a number to a string number' do
+      {
+        '0' => [
+          [' ', '_', ' '],
+          ['|', ' ', '|'],
+          ['|', '_', '|'],
+        ],
+        '1' => [
+          [' ', ' ', ' '],
+          [' ', ' ', '|'],
+          [' ', ' ', '|'],
+        ],
+      }.each do |expected, pipe_underscore_number_array|
+        result = Number.new(pipe_underscore_number_array).to_s
+        expect(result).to eq(expected)
       end
     end
   end
