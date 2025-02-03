@@ -31,12 +31,40 @@ class Number
   end
 end
 
+class Account
+
+  attr_reader :array_representation
+  def initialize(array_representation)
+    @array_representation = array_representation
+  end
+
+  def to_s
+    r = array_representation
+          .map { |row| row.each_slice(3).to_a }
+          .transpose
+          .map do |row_array|
+              Number.new(row_array).to_s
+          end
+    r.join("")
+  end
+end
+
+
 class Accounts
   def self.from_string(account_numbers_string)
-    self.new
+    rows = account_numbers_string
+             .split("\n")
+             .map { |str| str.split("") }
+
+    self.new(rows)
+  end
+
+  attr_reader :account_numbers
+  def initialize(account_numbers)
+    @account_numbers = account_numbers
   end
 
   def to_a
-    ['000000000']
+    [Account.new(@account_numbers).to_s]
   end
 end
