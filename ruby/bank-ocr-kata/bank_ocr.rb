@@ -6,22 +6,24 @@ class Number
 
   def to_s
     {
-      10 => '0',
-      4 => '1',
-      7 => '2',
+      2008 => '0',
+      1500 => '1',
+      912 => '2',
+      1512 => '3',
     }.fetch(group_total)
   end
 
   private
 
   def group_total
-    @pipe_underscore_number_array.reduce(0) do |group_total, row|
-      group_total += row.reduce(0) do |row_total, character|
+    @pipe_underscore_number_array.each_with_index.reduce(0) do |group_total, (row, row_index)|
+      group_total += row.each_with_index.reduce(0) do |row_total, (character, column_index)|
+        modifier = (row_index + 1) * (column_index + 1)
         case character
         when "_"
-          row_total += 1
+          row_total += (1 * modifier)
         when "|"
-          row_total += 2
+          row_total += (100 * modifier)
         else
           row_total += 0
         end
