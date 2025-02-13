@@ -8,6 +8,7 @@ class Number
     {
       10 => '0',
       4 => '1',
+      7 => '2',
     }.fetch(group_total)
   end
 
