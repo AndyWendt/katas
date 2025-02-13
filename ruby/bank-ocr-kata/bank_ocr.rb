@@ -10,6 +10,7 @@ class Number
       1500 => '1',
       912 => '2',
       1512 => '3',
+      1704 => '4',
     }.fetch(group_total)
   end
 

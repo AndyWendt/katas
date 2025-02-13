@@ -14,6 +14,7 @@ describe 'user story 1' do
         :'user-story-1-111111111.txt' => '111111111',
         :'user-story-1-222222222.txt' => '222222222',
         :'user-story-1-333333333.txt' => '333333333',
+        :'user-story-1-444444444.txt' => '444444444',
       }.each do |file_name_symbol, expected|
         account_numbers_string = accounts_file_reader(file_name_symbol.to_s).to_s
         result = Accounts.from_string(account_numbers_string).to_a
@@ -62,6 +63,11 @@ describe 'user story 1' do
           [' ', '_', ' '],
           [' ', '_', '|'],
           [' ', '_', '|'],
+        ],
+        '4' => [
+          [' ', ' ', ' '],
+          ['|', '_', '|'],
+          [' ', ' ', '|'],
         ],
       }.each do |expected, pipe_underscore_number_array|
         result = Number.new(pipe_underscore_number_array).to_s
